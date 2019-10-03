@@ -1,0 +1,10 @@
+#!/bin/bash
+while read -r STATUS FILE; do
+  if [[ "$FILE" =~ ^.+pp$ ]]; then
+	  if ! puppet-lint "$FILE" 1> /dev/null; then
+		  echo "Aborting commit due to failed puppet-lint of \"$FILE\"" >&2
+      echo "Status: $STATUS"
+		  exit 1
+	  fi
+  fi
+done <<< "$(git diff --cached --name-status --diff-filter=ACMR)"
