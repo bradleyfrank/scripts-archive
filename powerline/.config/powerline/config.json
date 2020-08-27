@@ -1,0 +1,10 @@
+{
+	"ext": {
+		"shell": {
+			"theme": "custom"
+		},
+		"tmux": {
+			"theme": "custom"
+		}
+	}
+}
